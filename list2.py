@@ -5,7 +5,7 @@ Kenzie assignment: List2
 """
 # Your name, plus anyone who helped you with this assignment.
 # Give credit where credit is due.
-__author__ = "???"
+__author__ = "Kevin Clark with help from JT, Joseph and Daniel and Howard Post"
 
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
@@ -28,8 +28,14 @@ __author__ = "???"
 
 
 def remove_adjacent(nums):
-    # your code here
-    return
+    if len(nums) == 0:
+        return []
+    result = []
+    result.append(nums.pop(0))
+    for index, item in enumerate(nums):
+        if nums[index] != result[-1]:
+            result.append(item)
+    return result
 
 
 # E. zip_merge
@@ -43,9 +49,11 @@ def remove_adjacent(nums):
 
 
 def zip_merge(list1, list2):
-    # your code here
-    return
-
+    return [l1 + l2 for l1, l2 in zip(list1, list2)]
+    # result = []
+    # for l1, l2 in zip(list1, list2):
+    #     result.append(l1 + l2)
+    # return result
 
 # F. empty_filter
 # Given a single list containing strings, empty strings, and
@@ -56,9 +64,16 @@ def zip_merge(list1, list2):
 # Hint: There is a Python idiom for doing this.  Can you find it?
 
 
+# def filter_list(item):
+#     search = ['', None]
+#     if item in search:
+#         return False
+#     else:
+#         return True
+
+
 def empty_filter(list1):
-    # your code here
-    return
+    return list(filter(None, list1))
 
 
 # G. linear_merge
@@ -73,8 +88,17 @@ def empty_filter(list1):
 
 
 def linear_merge(list1, list2):
-    # your code here
-    return
+    result = []
+    index1 = 0
+    index2 = 0
+    while index1 < len(list1) and index2 < len(list2):
+        if list1[index1] < list2[index2]:
+            result.append(list1[index1])
+            index1 += 1
+        else:
+            result.append(list2[index2])
+            index2 += 1
+    return result + list1[index1:] + list2[index2:]
 
 
 # Provided simple test() function used in main() to print
