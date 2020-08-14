@@ -5,7 +5,10 @@ Kenzie assignment: List1
 """
 # Your name, plus anyone who helped you with this assignment.
 # Give credit where credit is due.
-__author__ = "???"
+__author__ = '''
+Kevin Clark, I also had help with front_x from this site below
+https://stackoverflow.com/questions/3121979/how-to-sort-a-list-tuple-of-lists-tuples-by-the-element-at-a-given-index
+'''
 
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
@@ -26,8 +29,12 @@ __author__ = "???"
 
 
 def match_ends(words):
-    # your code here
-    return
+    counter = 0
+    for word in words:
+        if len(word) >= 2:
+            if word[:1] == word[-1:]:
+                counter += 1
+    return counter
 
 
 # B. front_x
@@ -42,8 +49,17 @@ def match_ends(words):
 
 
 def front_x(words):
-    # your code here
-    return
+    result1_x = []
+    result2 = []
+    for word in words:
+        if word[:1] == 'x':
+            result1_x.append(word)
+        else:
+            result2.append(word)
+    result1_x.sort()
+    result2.sort()
+    combine = result1_x + result2
+    return combine
 
 
 # C. sort_last
@@ -56,8 +72,8 @@ def front_x(words):
 
 
 def sort_last(tuples):
-    # your code here
-    return
+    tuples.sort(key=lambda x: x[-1:])
+    return tuples
 
 
 # Provided simple test() function used in main() to print
